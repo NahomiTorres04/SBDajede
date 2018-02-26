@@ -150,9 +150,43 @@ public class Registrarjf extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nrobotActionPerformed
 
-    private void verificarCampos()
-    {
-        
+    private boolean verificar() {
+        if (txtNombre.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo Nombre está vacío");
+            txtNombre.requestFocus();
+            return false;
+        }
+        else if (txtApellido.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo Apellido está vacío");
+            txtApellido.requestFocus();
+            return false;
+        }
+        else if (txtPuesto.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo Puesto está vacío");
+            txtPuesto.requestFocus();
+            return false;
+        }
+        else if (txtUsuario.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo Usuario está vacío");
+            txtUsuario.requestFocus();
+            return false;
+        }
+        else if (TPFContrasenia.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo contraseña está vacío");
+            TPFContrasenia.requestFocus();
+            return false;
+        }
+        else if (TPFConfcontrasenia.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "El campo Confirmar contraseña está vacío");
+            TPFConfcontrasenia.requestFocus();
+            return false;
+        } 
+        else if(!nrobot.isSelected()){
+            JOptionPane.showMessageDialog(null, "Por favor confirme que no es un robot");
+            nrobot.requestFocus();
+            return false;
+        }else
+            return true;
     }
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         String nombre=txtNombre.getText();
