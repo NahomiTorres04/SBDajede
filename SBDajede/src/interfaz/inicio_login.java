@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import Clases.Usuario;
 import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,22 +22,25 @@ public class inicio_login extends javax.swing.JFrame {
     /**
      * Creates new form inicio_login
      */
+    private Usuario us;
+
     public inicio_login() {
         initComponents();
-        padmincomit.setBackground(new Color(0,0,0,0));
-        pingresofp.setBackground(new Color(0,0,0,0));
-        pgif.setBackground(new Color(0,0,0,0));
-        pdatossesion.setBackground(new Color(0,0,0,0));
-        jComboBox1.setBackground(new Color(0,0,0,0));
-        jPasswordField1.setBackground(new Color(0,0,0,0));
-        Toolkit tk =  Toolkit.getDefaultToolkit();
+        us = new Usuario();
+        padmincomit.setBackground(new Color(0, 0, 0, 0));
+        pingresofp.setBackground(new Color(0, 0, 0, 0));
+        pgif.setBackground(new Color(0, 0, 0, 0));
+        pdatossesion.setBackground(new Color(0, 0, 0, 0));
+        jComboBox1.setBackground(new Color(0, 0, 0, 0));
+        jPasswordField1.setBackground(new Color(0, 0, 0, 0));
+        Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension tamanio = tk.getScreenSize();
-        this.setSize(tamanio.width,tamanio.height-10);
+        this.setSize(tamanio.width, tamanio.height - 10);
         this.setLocationRelativeTo(null);
         transparencia();
     }
-    public void transparencia()
-    {
+
+    public void transparencia() {
 //        btnminimizar.setOpaque(false);
 //        btnminimizar.setContentAreaFilled(false);
 //        btnminimizar.setBorderPainted(false);
@@ -62,6 +66,7 @@ public class inicio_login extends javax.swing.JFrame {
         btnfpassword.setContentAreaFilled(false);
         btnfpassword.setBorderPainted(false);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,6 +111,7 @@ public class inicio_login extends javax.swing.JFrame {
         btnfpassword = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(724, 635));
 
         interfaz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/iniciointerfaz.jpg"))); // NOI18N
         interfaz.setLayout(new java.awt.CardLayout());
@@ -128,14 +134,14 @@ public class inicio_login extends javax.swing.JFrame {
             inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
                 .addContainerGap(1239, Short.MAX_VALUE)
-                .addComponent(btnsiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(btnsiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(108, 108, 108))
         );
         inicioLayout.setVerticalGroup(
             inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
                 .addContainerGap(582, Short.MAX_VALUE)
-                .addComponent(btnsiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(btnsiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(152, 152, 152))
         );
 
@@ -253,33 +259,38 @@ public class inicio_login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsiguienteActionPerformed
-   rSPanelsSlider1.setPanelSlider(login, RSPanelsSlider.DIRECT.LEFT);        
+
+        if(us.verificarUsuario()==0)
+        {
+            Registrarjf registrar = new Registrarjf();
+            registrar.setVisible(true);
+            this.dispose();
+        }
+        else
+            rSPanelsSlider1.setPanelSlider(login, RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_btnsiguienteActionPerformed
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
         this.dispose();
-        splashjf s= new splashjf();
-        
+        splashjf s = new splashjf();
+
         this.dispose();
         s.setVisible(true);
         s.setLocationRelativeTo(null);
-         try{
-        for(int i= 0; i<=100;i++)
-            {
+        try {
+            for (int i = 0; i <= 100; i++) {
                 Thread.sleep(10);
-                s.porcentajec.setText(Integer.toString(i)+"%");
+                s.porcentajec.setText(Integer.toString(i) + "%");
                 s.barracargando.setValue(i);
-                if(i==100)
-                 {
-                     s.dispose();
-                     
-                 }
+                if (i == 100) {
+                    s.dispose();
+
+                }
             }
 
-         }catch(InterruptedException e)
-         {
-             
-         }
+        } catch (InterruptedException e) {
+
+        }
     }//GEN-LAST:event_btningresarActionPerformed
 
     /**
