@@ -6,6 +6,7 @@
 package interfaz;
 
 import com.sun.awt.AWTUtilities;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,42 @@ public class Registrarjf extends javax.swing.JFrame {
         btnregistrar.setOpaque(false);
         btnregistrar.setContentAreaFilled(false);
         btnregistrar.setBorderPainted(false);
+    }
+    
+    private boolean verificar()
+    {
+        if(txtNombre.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo Nombre está vacío");
+            return false;
+        }
+        if(txtApellido.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo Apellido está vacío");
+            return false;
+        }
+        if(txtPuesto.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo Puesto está vacío");
+            return false;
+        }
+        if(txtUsuario.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo Usuario está vacío");
+            return false;
+        }
+        if(JPFcontrasenia.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo contraseña está vacío");
+            return false;
+        }
+        if(JPFconfcontrasenia.getText().length() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "El campo Confirmar contraseña está vacío");
+            return false;
+        }
+        else
+            return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,7 +161,7 @@ public class Registrarjf extends javax.swing.JFrame {
         getContentPane().add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 542, 120, 80));
 
         registrarimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/To the Brig!.jpg"))); // NOI18N
-        getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,7 +184,7 @@ public class Registrarjf extends javax.swing.JFrame {
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         this.dispose();
-         inicio_login log = new inicio_login();
+        inicio_login log = new inicio_login();
         log.setVisible(true);
     }//GEN-LAST:event_btnregistrarActionPerformed
 
