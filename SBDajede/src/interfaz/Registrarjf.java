@@ -19,8 +19,9 @@ public class Registrarjf extends javax.swing.JFrame {
      * Creates new form registrar
      */
     private Usuario us;
+
     public Registrarjf() {
-        us=new Usuario();
+        us = new Usuario();
         initComponents();
         AWTUtilities.setWindowOpaque(this, false);
         this.setLocationRelativeTo(null);
@@ -45,8 +46,8 @@ public class Registrarjf extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
-        txtcontrasenia = new javax.swing.JPasswordField();
-        txtConfcontrasenia = new javax.swing.JPasswordField();
+        TPFcontrasenia = new javax.swing.JPasswordField();
+        TPFConfcontrasenia = new javax.swing.JPasswordField();
         txtPuesto = new javax.swing.JTextField();
         nrobot = new javax.swing.JCheckBox();
         btnregistrar = new javax.swing.JButton();
@@ -60,13 +61,16 @@ public class Registrarjf extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(204, 204, 204));
-        txtNombre.setText("Alex");
         txtNombre.setBorder(null);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 380, 30));
 
         txtApellido.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(204, 204, 204));
-        txtApellido.setText("de León");
         txtApellido.setBorder(null);
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +81,6 @@ public class Registrarjf extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtUsuario.setText("ejemplo@gmail.com");
         txtUsuario.setBorder(null);
         txtUsuario.setName("txtUsuario"); // NOI18N
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -87,26 +90,23 @@ public class Registrarjf extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 300, 30));
 
-        txtcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        txtcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
-        txtcontrasenia.setText("jPasswordField1");
-        txtcontrasenia.setBorder(null);
-        getContentPane().add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 382, 340, 30));
+        TPFcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        TPFcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
+        TPFcontrasenia.setBorder(null);
+        getContentPane().add(TPFcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 382, 340, 30));
 
-        txtConfcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        txtConfcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
-        txtConfcontrasenia.setText("jPasswordField1");
-        txtConfcontrasenia.setBorder(null);
-        txtConfcontrasenia.addActionListener(new java.awt.event.ActionListener() {
+        TPFConfcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        TPFConfcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
+        TPFConfcontrasenia.setBorder(null);
+        TPFConfcontrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfcontraseniaActionPerformed(evt);
+                TPFConfcontraseniaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtConfcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 438, 300, 30));
+        getContentPane().add(TPFConfcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 438, 300, 30));
 
         txtPuesto.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         txtPuesto.setForeground(new java.awt.Color(204, 204, 204));
-        txtPuesto.setText("presidente");
         txtPuesto.setBorder(null);
         getContentPane().add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 488, 380, 30));
 
@@ -142,9 +142,9 @@ public class Registrarjf extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtConfcontraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfcontraseniaActionPerformed
+    private void TPFConfcontraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TPFConfcontraseniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfcontraseniaActionPerformed
+    }//GEN-LAST:event_TPFConfcontraseniaActionPerformed
 
     private void nrobotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrobotActionPerformed
         // TODO add your handling code here:
@@ -155,62 +155,69 @@ public class Registrarjf extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo Nombre está vacío");
             txtNombre.requestFocus();
             return false;
-        }
-        else if (txtApellido.getText().length() == 0) {
+        } else if (txtApellido.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo Apellido está vacío");
             txtApellido.requestFocus();
             return false;
-        }
-        else if (txtPuesto.getText().length() == 0) {
+        } else if (txtPuesto.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo Puesto está vacío");
             txtPuesto.requestFocus();
             return false;
-        }
-        else if (txtUsuario.getText().length() == 0) {
+        } else if (txtUsuario.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo Usuario está vacío");
             txtUsuario.requestFocus();
             return false;
-        }
-        else if (TPFContrasenia.getText().length() == 0) {
+        } else if (TPFcontrasenia.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo contraseña está vacío");
-            TPFContrasenia.requestFocus();
+            TPFcontrasenia.requestFocus();
             return false;
-        }
-        else if (TPFConfcontrasenia.getText().length() == 0) {
+        } else if (TPFConfcontrasenia.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo Confirmar contraseña está vacío");
             TPFConfcontrasenia.requestFocus();
             return false;
-        } 
-        else if(!nrobot.isSelected()){
+        } else if (!nrobot.isSelected()) {
             JOptionPane.showMessageDialog(null, "Por favor confirme que no es un robot");
             nrobot.requestFocus();
             return false;
-        }else
+        } else {
             return true;
+        }
     }
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
-        String nombre=txtNombre.getText();
-        String apellido=txtApellido.getText();
-        String email=txtUsuario.getText();
-        
-        this.dispose();
-        inicio_login log = new inicio_login();
-        log.setVisible(true);
+        if (!verificar()) {
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String email = txtUsuario.getText();
+            String puesto = txtPuesto.getText();
+            String contrasenia = TPFcontrasenia.getText();
+            String confirmContrasenia = TPFConfcontrasenia.getText();
+            if(contrasenia.equals(confirmContrasenia)) {
+                this.dispose();
+                inicio_login log = new inicio_login();
+                log.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "La contraseña no coincide.");
+            }
+        }
     }//GEN-LAST:event_btnregistrarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField TPFConfcontrasenia;
+    private javax.swing.JPasswordField TPFcontrasenia;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JCheckBox nrobot;
     private javax.swing.JLabel registrarimg;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JPasswordField txtConfcontrasenia;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPuesto;
     private javax.swing.JTextField txtUsuario;
-    private javax.swing.JPasswordField txtcontrasenia;
     // End of variables declaration//GEN-END:variables
 }
