@@ -67,10 +67,9 @@ public class Usuario {
     public DefaultComboBoxModel usuarios() {
         try {
             DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
-            String sql = "SELECT nombreusuario FROM usuario";
+            String sql = "SELECT * FROM usuario";
             Statement St = con.createStatement();
             ResultSet Rs = St.executeQuery(sql);
-            boolean error;
             while (Rs.next()) {
                 modeloCombo.addElement(Rs.getString("nombreusuario"));
             }
