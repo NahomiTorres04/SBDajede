@@ -26,7 +26,7 @@ public class Usuario {
         con = conexion.getConnection();
     }
 
-    public void insertar() {
+    public void insertar(String nombre, String apellido, String contraseña, String Puesto) {
 
     }
     public int verificarUsuario()
