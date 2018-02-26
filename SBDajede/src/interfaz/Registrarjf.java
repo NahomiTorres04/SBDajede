@@ -31,9 +31,7 @@ public class Registrarjf extends javax.swing.JFrame {
     
     private String encriptar(String password)
     {
-        password = TPFConfcontrasenia.getText();
-        String passEncriptada = DigestUtils.md5Hex(password);
-        return passEncriptada;
+        return DigestUtils.md5Hex(password);
     }
 
     private void transparencia() {
@@ -200,6 +198,7 @@ public class Registrarjf extends javax.swing.JFrame {
             String contrasenia = TPFcontrasenia.getText();
             String confirmContrasenia = TPFConfcontrasenia.getText();
             if(contrasenia.equals(confirmContrasenia)) {
+                us.insertar(nombre, apellido, encriptar(contrasenia), puesto, email);
                 this.dispose();
                 inicio_login log = new inicio_login();
                 log.setVisible(true);
