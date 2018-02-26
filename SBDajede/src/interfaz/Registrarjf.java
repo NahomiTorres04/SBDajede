@@ -198,7 +198,10 @@ public class Registrarjf extends javax.swing.JFrame {
             String contrasenia = TPFcontrasenia.getText();
             String confirmContrasenia = TPFConfcontrasenia.getText();
             if(contrasenia.equals(confirmContrasenia)) {
-                us.insertar(nombre, apellido, encriptar(contrasenia), puesto, email);
+                if(us.insertar(nombre, apellido, encriptar(contrasenia), puesto, email))
+                    JOptionPane.showMessageDialog(null, "INGRESO REALIZADO CORRECTAMENTE", "Informe", JOptionPane.INFORMATION_MESSAGE);
+                else
+                    JOptionPane.showMessageDialog(null, "ERROR AL INGRESAR EL USUARIO", "Error", JOptionPane.WARNING_MESSAGE);
                 this.dispose();
                 inicio_login log = new inicio_login();
                 log.setVisible(true);
