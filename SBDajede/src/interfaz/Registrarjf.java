@@ -184,7 +184,7 @@ public class Registrarjf extends javax.swing.JFrame {
         }
     }
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
-        if (!verificar()) {
+        if (verificar()) {
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String email = txtUsuario.getText();
