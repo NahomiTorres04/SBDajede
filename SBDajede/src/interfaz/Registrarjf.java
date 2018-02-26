@@ -8,6 +8,7 @@ package interfaz;
 import Clases.Usuario;
 import com.sun.awt.AWTUtilities;
 import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -26,6 +27,13 @@ public class Registrarjf extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false);
         this.setLocationRelativeTo(null);
         transparencia();
+    }
+    
+    private String encriptar(String password)
+    {
+        password = TPFConfcontrasenia.getText();
+        String passEncriptada = DigestUtils.md5Hex(password);
+        return passEncriptada;
     }
 
     private void transparencia() {
