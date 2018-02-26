@@ -5,7 +5,9 @@
  */
 package interfaz;
 
+import Clases.Usuario;
 import com.sun.awt.AWTUtilities;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,18 +18,21 @@ public class Registrarjf extends javax.swing.JFrame {
     /**
      * Creates new form registrar
      */
+    private Usuario us;
     public Registrarjf() {
+        us=new Usuario();
         initComponents();
         AWTUtilities.setWindowOpaque(this, false);
         this.setLocationRelativeTo(null);
         transparencia();
     }
-    private void transparencia()
-    {
+
+    private void transparencia() {
         btnregistrar.setOpaque(false);
         btnregistrar.setContentAreaFilled(false);
         btnregistrar.setBorderPainted(false);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,12 +42,12 @@ public class Registrarjf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nombre = new javax.swing.JTextField();
-        apellido = new javax.swing.JTextField();
-        usuario = new javax.swing.JTextField();
-        contrasenia = new javax.swing.JPasswordField();
-        confcontrasenia = new javax.swing.JPasswordField();
-        puesto = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtcontrasenia = new javax.swing.JPasswordField();
+        txtConfcontrasenia = new javax.swing.JPasswordField();
+        txtPuesto = new javax.swing.JTextField();
         nrobot = new javax.swing.JCheckBox();
         btnregistrar = new javax.swing.JButton();
         registrarimg = new javax.swing.JLabel();
@@ -53,57 +58,57 @@ public class Registrarjf extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nombre.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        nombre.setForeground(new java.awt.Color(204, 204, 204));
-        nombre.setText("Alex");
-        nombre.setBorder(null);
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 380, 30));
+        txtNombre.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombre.setText("Alex");
+        txtNombre.setBorder(null);
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 380, 30));
 
-        apellido.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        apellido.setForeground(new java.awt.Color(204, 204, 204));
-        apellido.setText("de León");
-        apellido.setBorder(null);
-        apellido.addActionListener(new java.awt.event.ActionListener() {
+        txtApellido.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellido.setText("de León");
+        txtApellido.setBorder(null);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
+                txtApellidoActionPerformed(evt);
             }
         });
-        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 276, 380, 30));
+        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 276, 380, 30));
 
-        usuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        usuario.setForeground(new java.awt.Color(204, 204, 204));
-        usuario.setText("ejemplo@gmail.com");
-        usuario.setBorder(null);
-        usuario.setName("usuario"); // NOI18N
-        usuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtUsuario.setText("ejemplo@gmail.com");
+        txtUsuario.setBorder(null);
+        txtUsuario.setName("txtUsuario"); // NOI18N
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 300, 30));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 300, 30));
 
-        contrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        contrasenia.setForeground(new java.awt.Color(153, 153, 153));
-        contrasenia.setText("jPasswordField1");
-        contrasenia.setBorder(null);
-        getContentPane().add(contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 382, 340, 30));
+        txtcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        txtcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
+        txtcontrasenia.setText("jPasswordField1");
+        txtcontrasenia.setBorder(null);
+        getContentPane().add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 382, 340, 30));
 
-        confcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        confcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
-        confcontrasenia.setText("jPasswordField1");
-        confcontrasenia.setBorder(null);
-        confcontrasenia.addActionListener(new java.awt.event.ActionListener() {
+        txtConfcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        txtConfcontrasenia.setForeground(new java.awt.Color(153, 153, 153));
+        txtConfcontrasenia.setText("jPasswordField1");
+        txtConfcontrasenia.setBorder(null);
+        txtConfcontrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confcontraseniaActionPerformed(evt);
+                txtConfcontraseniaActionPerformed(evt);
             }
         });
-        getContentPane().add(confcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 438, 300, 30));
+        getContentPane().add(txtConfcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 438, 300, 30));
 
-        puesto.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        puesto.setForeground(new java.awt.Color(204, 204, 204));
-        puesto.setText("presidente");
-        puesto.setBorder(null);
-        getContentPane().add(puesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 488, 380, 30));
+        txtPuesto.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        txtPuesto.setForeground(new java.awt.Color(204, 204, 204));
+        txtPuesto.setText("presidente");
+        txtPuesto.setBorder(null);
+        getContentPane().add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 488, 380, 30));
 
         nrobot.setBackground(new java.awt.Color(255, 255, 255));
         nrobot.addActionListener(new java.awt.event.ActionListener() {
@@ -129,73 +134,49 @@ public class Registrarjf extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
+    }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void confcontraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confcontraseniaActionPerformed
+    private void txtConfcontraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfcontraseniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confcontraseniaActionPerformed
+    }//GEN-LAST:event_txtConfcontraseniaActionPerformed
 
     private void nrobotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrobotActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nrobotActionPerformed
 
+    private void verificarCampos()
+    {
+        
+    }
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        String nombre=txtNombre.getText();
+        String apellido=txtApellido.getText();
+        String email=txtUsuario.getText();
+        
         this.dispose();
-         inicio_login log = new inicio_login();
+        inicio_login log = new inicio_login();
         log.setVisible(true);
     }//GEN-LAST:event_btnregistrarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrarjf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrarjf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrarjf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrarjf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registrarjf().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField apellido;
     private javax.swing.JButton btnregistrar;
-    private javax.swing.JPasswordField confcontrasenia;
-    private javax.swing.JPasswordField contrasenia;
-    private javax.swing.JTextField nombre;
     private javax.swing.JCheckBox nrobot;
-    private javax.swing.JTextField puesto;
     private javax.swing.JLabel registrarimg;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JPasswordField txtConfcontrasenia;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPuesto;
+    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JPasswordField txtcontrasenia;
     // End of variables declaration//GEN-END:variables
 }
