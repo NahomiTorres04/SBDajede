@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -39,14 +39,8 @@ public class Usuario {
             Pst.setString(4, nombre);
             Pst.setString(5, apellido);
             int n = Pst.executeUpdate();
-            if (n != 0) {
-                JOptionPane.showMessageDialog(null, "INGRESO REALIZADO CORRECTAMENTE", "Informe", JOptionPane.INFORMATION_MESSAGE);
-                return true;
-            } else {
-                return false;
-            }
+            return n != 0;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR AL INGRESAR EL CLIENTE", "Error", JOptionPane.WARNING_MESSAGE);
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
@@ -55,7 +49,7 @@ public class Usuario {
     public int verificarUsuario() {
         int total = 0;
         try {
-            String sql = "SELECT count(id) AS total FROM usuario";
+            String sql = "SELECT count(*) AS total FROM usuario";
             Statement St = con.createStatement();
             ResultSet Rs = St.executeQuery(sql);
 
@@ -69,4 +63,39 @@ public class Usuario {
         }
 
     }
+
+    public DefaultComboBoxModel usuarios() {
+        try {
+            DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
+            String sql = "SELECT nombreusuario FROM usuario";
+            Statement St = con.createStatement();
+            ResultSet Rs = St.executeQuery(sql);
+            boolean error;
+            while (Rs.next()) {
+                modeloCombo.addElement(Rs.getString("nombreusuario"));
+            }
+            return modeloCombo;
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public boolean verificar(String contrasenia, String usuario) {
+        try {
+            String sql = "SELECT password FROM usuario where nombreusuario='" + usuario + "'";
+            Statement St = con.createStatement();
+            ResultSet Rs = St.executeQuery(sql);
+            String pass = "";
+            while (Rs.next()) {
+                pass = Rs.getString("password");
+            }
+
+            return pass.equals(contrasenia);
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
 }

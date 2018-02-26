@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
+import org.apache.commons.codec.digest.DigestUtils;
 import rojerusan.RSPanelsSlider;
 
 /**
@@ -27,12 +28,13 @@ public class inicio_login extends javax.swing.JFrame {
     public inicio_login() {
         initComponents();
         us = new Usuario();
+        CMBUsuarios.setModel(us.usuarios());
         padmincomit.setBackground(new Color(0, 0, 0, 0));
         pingresofp.setBackground(new Color(0, 0, 0, 0));
         pgif.setBackground(new Color(0, 0, 0, 0));
         pdatossesion.setBackground(new Color(0, 0, 0, 0));
-        jComboBox1.setBackground(new Color(0, 0, 0, 0));
-        jPasswordField1.setBackground(new Color(0, 0, 0, 0));
+        CMBUsuarios.setBackground(new Color(0, 0, 0, 0));
+        PSTcontrasenia.setBackground(new Color(0, 0, 0, 0));
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension tamanio = tk.getScreenSize();
         this.setSize(tamanio.width, tamanio.height - 10);
@@ -93,10 +95,10 @@ public class inicio_login extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CMBUsuarios = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PSTcontrasenia = new javax.swing.JPasswordField();
         padmincomit = new javax.swing.JPanel();
         btnadmin = new javax.swing.JButton();
         btncomite = new javax.swing.JButton();
@@ -168,22 +170,27 @@ public class inicio_login extends javax.swing.JFrame {
         pdatossesion.add(jLabel15);
         pdatossesion.add(jLabel13);
 
-        jComboBox1.setBackground(new java.awt.Color(0, 102, 153));
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ejemplo@gmail.com", "ejemplo2@hotmail.com", "ejemplo3@outlook.com", "ejemplo4@yahoo.com" }));
-        jComboBox1.setBorder(null);
-        pdatossesion.add(jComboBox1);
+        CMBUsuarios.setBackground(new java.awt.Color(0, 102, 153));
+        CMBUsuarios.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
+        CMBUsuarios.setForeground(new java.awt.Color(0, 255, 255));
+        CMBUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ejemplo@gmail.com", "ejemplo2@hotmail.com", "ejemplo3@outlook.com", "ejemplo4@yahoo.com" }));
+        CMBUsuarios.setBorder(null);
+        CMBUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CMBUsuariosActionPerformed(evt);
+            }
+        });
+        pdatossesion.add(CMBUsuarios);
 
         jLabel14.setText("  ");
         pdatossesion.add(jLabel14);
         pdatossesion.add(jLabel18);
 
-        jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(0, 255, 255));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        pdatossesion.add(jPasswordField1);
+        PSTcontrasenia.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
+        PSTcontrasenia.setForeground(new java.awt.Color(0, 255, 255));
+        PSTcontrasenia.setText("jPasswordField1");
+        PSTcontrasenia.setBorder(null);
+        pdatossesion.add(PSTcontrasenia);
 
         login.add(pdatossesion);
 
@@ -260,38 +267,48 @@ public class inicio_login extends javax.swing.JFrame {
 
     private void btnsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsiguienteActionPerformed
 
-        if(us.verificarUsuario()==0)
-        {
+        if (us.verificarUsuario() == 0) {
             Registrarjf registrar = new Registrarjf();
             registrar.setVisible(true);
             this.dispose();
-        }
-        else
+        } else {
             rSPanelsSlider1.setPanelSlider(login, RSPanelsSlider.DIRECT.LEFT);
+        }
     }//GEN-LAST:event_btnsiguienteActionPerformed
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
-        this.dispose();
-        splashjf s = new splashjf();
+        String usuario = (String) CMBUsuarios.getSelectedItem();
+        if (us.verificar(DigestUtils.md5Hex(PSTcontrasenia.getText()), usuario)) {
+            this.dispose();
+            splashjf s = new splashjf();
 
-        this.dispose();
-        s.setVisible(true);
-        s.setLocationRelativeTo(null);
-        try {
-            for (int i = 0; i <= 100; i++) {
-                Thread.sleep(10);
-                s.porcentajec.setText(Integer.toString(i) + "%");
-                s.barracargando.setValue(i);
-                if (i == 100) {
-                    s.dispose();
+            this.dispose();
+            s.setVisible(true);
+            s.setLocationRelativeTo(null);
+            try {
+                for (int i = 0; i <= 100; i++) {
+                    Thread.sleep(10);
+                    s.porcentajec.setText(Integer.toString(i) + "%");
+                    s.barracargando.setValue(i);
+                    if (i == 100) {
+                        s.dispose();
 
+                    }
                 }
+
+            } catch (InterruptedException e) {
+
             }
-
-        } catch (InterruptedException e) {
-
+        } else {
+            System.out.println("Error al ingresar la contraseña");
         }
+
     }//GEN-LAST:event_btningresarActionPerformed
+
+    private void CMBUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CMBUsuariosActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_CMBUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,6 +347,8 @@ public class inicio_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CMBUsuarios;
+    private javax.swing.JPasswordField PSTcontrasenia;
     private javax.swing.JButton btnadmin;
     private javax.swing.JButton btncomite;
     private javax.swing.JButton btnfpassword;
@@ -337,7 +356,6 @@ public class inicio_login extends javax.swing.JFrame {
     private javax.swing.JButton btnsiguiente;
     private jcMousePanel.jcMousePanel inicio;
     private jcMousePanel.jcMousePanel interfaz;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -356,7 +374,6 @@ public class inicio_login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private jcMousePanel.jcMousePanel login;
     private javax.swing.JPanel padmincomit;
     private javax.swing.JPanel pdatossesion;
