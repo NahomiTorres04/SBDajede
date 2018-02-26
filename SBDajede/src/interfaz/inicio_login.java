@@ -243,6 +243,11 @@ public class inicio_login extends javax.swing.JFrame {
         btnfpassword.setMargin(new java.awt.Insets(10, 20, 2, 55));
         btnfpassword.setName("btnfpassword"); // NOI18N
         btnfpassword.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/login/icons8_Forgot_Password_100px.png"))); // NOI18N
+        btnfpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfpasswordActionPerformed(evt);
+            }
+        });
         pingresofp.add(btnfpassword);
 
         login.add(pingresofp);
@@ -309,6 +314,12 @@ public class inicio_login extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_CMBUsuariosActionPerformed
+
+    private void btnfpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfpasswordActionPerformed
+        /* Necesario poner un proceso por si olvidó la contraseña
+        Sugerencia: reenviar contraseña: usuario123
+        */
+    }//GEN-LAST:event_btnfpasswordActionPerformed
 
     /**
      * @param args the command line arguments
