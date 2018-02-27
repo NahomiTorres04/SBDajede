@@ -189,6 +189,44 @@ public class Registrarjf extends javax.swing.JFrame {
             return true;
         }
     }
+    
+    //Función para verificar si el correo fue ingresado correctamente
+    public boolean verificarEmail(String email)
+    {
+        int contArroba = 0, letra = 0;
+        boolean arroba = false, mayuscula = false;
+        //Ciclo for para recorrer letra por letra el correo ingresado
+        for(int i=0; i<email.length(); i++)
+        {
+            letra = email.charAt(i);
+            //Condición para verificar si se ingresó alguna letra mayúscula
+            if(letra > 64 && letra < 91)
+            {
+                JOptionPane.showMessageDialog(null, "Debe escribir su correo en minúsculas");
+                mayuscula = true;
+            }
+            //Condición para contar cuántas arrobas ingresó el usuario
+            if(email.charAt(i) == '@')
+                contArroba++;
+        }
+        
+        //Condición para verificar que el correo sólo tenga una arroba
+        if(contArroba == 1)
+            arroba = true;
+        else
+        {
+            JOptionPane.showMessageDialog(null, "El correo debe contener una y solo una arroba");
+        }
+        
+        /*
+        Si la cantidad de arrobas ingresadas es 1 y no hay letras mayúsculas ingresadas, la función devolverá
+        true y el usuario será ingresado correctamente. De lo contrario el usuario no será ingresado.
+        */
+        if((arroba) && !mayuscula)
+            return true;
+        else return false;
+    }
+    
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         if (verificar()) {
             String nombre = txtNombre.getText();
@@ -197,16 +235,21 @@ public class Registrarjf extends javax.swing.JFrame {
             String puesto = txtPuesto.getText();
             String contrasenia = TPFcontrasenia.getText();
             String confirmContrasenia = TPFConfcontrasenia.getText();
-            if(contrasenia.equals(confirmContrasenia)) {
-                if(us.insertar(nombre, apellido, encriptar(contrasenia), puesto, email))
-                    JOptionPane.showMessageDialog(null, "INGRESO REALIZADO CORRECTAMENTE", "Informe", JOptionPane.INFORMATION_MESSAGE);
-                else
-                    JOptionPane.showMessageDialog(null, "ERROR AL INGRESAR EL USUARIO", "Error", JOptionPane.WARNING_MESSAGE);
-                this.dispose();
-                inicio_login log = new inicio_login();
-                log.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null, "La contraseña no coincide.");
+            
+            if(verificarEmail(email))
+            {
+                if(contrasenia.equals(confirmContrasenia)) 
+                {
+                    if(us.insertar(nombre, apellido, encriptar(contrasenia), puesto, email))
+                        JOptionPane.showMessageDialog(null, "INGRESO REALIZADO CORRECTAMENTE", "Informe", JOptionPane.INFORMATION_MESSAGE);
+                    else
+                        JOptionPane.showMessageDialog(null, "ERROR AL INGRESAR EL USUARIO", "Error", JOptionPane.WARNING_MESSAGE);
+                    this.dispose();
+                    inicio_login log = new inicio_login();
+                    log.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "La contraseña no coincide.");
+                }
             }
         }
     }//GEN-LAST:event_btnregistrarActionPerformed
