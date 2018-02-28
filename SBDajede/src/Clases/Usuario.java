@@ -65,8 +65,8 @@ public class Usuario {
     }
 
     public DefaultComboBoxModel usuarios() {
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
         try {
-            DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
             String sql = "SELECT * FROM usuario";
             Statement St = con.createStatement();
             ResultSet Rs = St.executeQuery(sql);
@@ -77,7 +77,7 @@ public class Usuario {
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return modeloCombo;
     }
 
     public boolean verificar(String contrasenia, String usuario) {
