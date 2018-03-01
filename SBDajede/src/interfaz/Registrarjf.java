@@ -54,9 +54,9 @@ public class Registrarjf extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         TPFcontrasenia = new javax.swing.JPasswordField();
         TPFConfcontrasenia = new javax.swing.JPasswordField();
-        txtPuesto = new javax.swing.JTextField();
         nrobot = new javax.swing.JCheckBox();
         btnregistrar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         registrarimg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,11 +111,6 @@ public class Registrarjf extends javax.swing.JFrame {
         });
         getContentPane().add(TPFConfcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 438, 300, 30));
 
-        txtPuesto.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        txtPuesto.setForeground(new java.awt.Color(204, 204, 204));
-        txtPuesto.setBorder(null);
-        getContentPane().add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 488, 380, 30));
-
         nrobot.setBackground(new java.awt.Color(255, 255, 255));
         nrobot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +128,9 @@ public class Registrarjf extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 542, 120, 80));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 360, 30));
 
         registrarimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/To the Brig!.jpg"))); // NOI18N
         getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -266,11 +264,11 @@ public class Registrarjf extends javax.swing.JFrame {
     private javax.swing.JPasswordField TPFConfcontrasenia;
     private javax.swing.JPasswordField TPFcontrasenia;
     private javax.swing.JButton btnregistrar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JCheckBox nrobot;
     private javax.swing.JLabel registrarimg;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPuesto;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
