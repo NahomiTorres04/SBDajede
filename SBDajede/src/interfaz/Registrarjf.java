@@ -56,7 +56,7 @@ public class Registrarjf extends javax.swing.JFrame {
         TPFConfcontrasenia = new javax.swing.JPasswordField();
         nrobot = new javax.swing.JCheckBox();
         btnregistrar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbPuesto = new javax.swing.JComboBox<>();
         registrarimg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,8 +129,8 @@ public class Registrarjf extends javax.swing.JFrame {
         });
         getContentPane().add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 542, 120, 80));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 360, 30));
+        cmbPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cmbPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 360, 30));
 
         registrarimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/To the Brig!.jpg"))); // NOI18N
         getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -163,9 +163,9 @@ public class Registrarjf extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo Apellido está vacío");
             txtApellido.requestFocus();
             return false;
-        } else if (txtPuesto.getText().length() == 0) {
+        } else if (cmbPuesto.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "El campo Puesto está vacío");
-            txtPuesto.requestFocus();
+            cmbPuesto.requestFocus();
             return false;
         } else if (txtUsuario.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "El campo Usuario está vacío");
@@ -230,7 +230,7 @@ public class Registrarjf extends javax.swing.JFrame {
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String email = txtUsuario.getText();
-            String puesto = txtPuesto.getText();
+            String puesto = (String)cmbPuesto.getSelectedItem();
             String contrasenia = TPFcontrasenia.getText();
             String confirmContrasenia = TPFConfcontrasenia.getText();
             
@@ -264,7 +264,7 @@ public class Registrarjf extends javax.swing.JFrame {
     private javax.swing.JPasswordField TPFConfcontrasenia;
     private javax.swing.JPasswordField TPFcontrasenia;
     private javax.swing.JButton btnregistrar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbPuesto;
     private javax.swing.JCheckBox nrobot;
     private javax.swing.JLabel registrarimg;
     private javax.swing.JTextField txtApellido;
