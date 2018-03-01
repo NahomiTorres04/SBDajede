@@ -57,6 +57,7 @@ public class Usuario {
              * para insertar al usuario se debe tomar en cuenta que los valores
              * que se le insertan esta con ? porque desconocemos que valores va
              * a tomar
+             * 
              */
             sql = "Insert into usuario(nombreusuario, password, nombre, apellido,puestos_id)"
                     + "Values(?,?,?,?,?)";
