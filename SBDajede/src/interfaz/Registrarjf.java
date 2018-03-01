@@ -163,7 +163,7 @@ public class Registrarjf extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo Apellido está vacío");
             txtApellido.requestFocus();
             return false;
-        } else if (cmbPuesto.getSelectedIndex() == -1) {
+        } else if (cmbPuesto.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "El campo Puesto está vacío");
             cmbPuesto.requestFocus();
             return false;
