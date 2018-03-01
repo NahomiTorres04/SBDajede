@@ -58,7 +58,7 @@ public class Usuario {
              * que se le insertan esta con ? porque desconocemos que valores va
              * a tomar
              */
-            sql = "Insert into usuario(nombreusuario, password, nombre, apellido,puestoUsuario_id)"
+            sql = "Insert into usuario(nombreusuario, password, nombre, apellido,puestos_id)"
                     + "Values(?,?,?,?,?)";
             PreparedStatement Pst = con.prepareStatement(sql);
             Pst.setString(1, email);
