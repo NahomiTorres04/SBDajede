@@ -144,7 +144,7 @@ public class Registrarjf extends javax.swing.JFrame {
         getContentPane().add(cmbPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 360, 30));
 
         registrarimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondos/To the Brig!.jpg"))); // NOI18N
-        getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(registrarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

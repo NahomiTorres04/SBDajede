@@ -10,6 +10,7 @@ import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.apache.commons.codec.digest.DigestUtils;
 import rojerusan.RSPanelsSlider;
@@ -35,11 +36,78 @@ public class inicio_login extends javax.swing.JFrame {
         pdatossesion.setBackground(new Color(0, 0, 0, 0));
         CMBUsuarios.setBackground(new Color(0, 0, 0, 0));
         PSTcontrasenia.setBackground(new Color(0, 0, 0, 0));
+        ajustar_tamanio();
+        transparencia();
+    }
+    /**
+     * Proceso para ajustar el tamaño de la aplicación
+     * dependiendo de la resolución de la computadora del usuario
+     */
+    public void ajustar_tamanio()
+    {
+        //TAMAÑO PREFERIDO PARA LA APLICACIÓN: 1450, 813
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension tamanio = tk.getScreenSize();
-        this.setSize(tamanio.width, tamanio.height - 10);
-        this.setLocationRelativeTo(null);
-        transparencia();
+        if((tamanio.width >= 1920) && (tamanio.height >= 1080)) //1920x1080
+        {
+            this.setSize(1450, 813);
+            this.setLocation(70, 70);
+        }
+        else if ((tamanio.width >= 1708) && (tamanio.height >= 960)) //1366x768
+        {
+            this.setSize(1300, 735);
+            this.setLocation(50,50);
+        }
+        else if ((tamanio.width >= 1700) && (tamanio.height >= 960)) //1360x768
+        {
+            this.setSize(1300, 735);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1680) && (tamanio.height >= 1050)) //1680x1050
+        {
+            this.setSize(1450, 813);
+            this.setLocation(70, 70);
+        }
+        else if((tamanio.width >= 1600) && (tamanio.height >= 1000)) //1280x800
+        {
+            this.setSize(1290, 730);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1600) && (tamanio.height >= 960)) //1280x768
+        {
+            this.setSize(1290, 730);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1600) && (tamanio.height >= 900)) //1280x720
+        {
+            this.setSize(1290, 730);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1600) && (tamanio.height >= 750)) //1280x600
+        {
+            this.setSize(1290, 635);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1400) && (tamanio.height >= 1050)) //1400x1050
+        {
+            this.setSize(1300, 635);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width >= 1280) && (tamanio.height >= 1024)) //1280x1024
+        {
+            this.setSize(1200, 635);
+            this.setLocation(50, 50);
+        }
+        else if ((tamanio.width == 1280) && (tamanio.height == 960)) //1024.768
+        {
+            this.setSize(1200, 635);
+            this.setLocation(50,50);
+        }
+        else if ((tamanio.width == 1000) && (tamanio.height == 750)) //800.600
+        {
+            this.setSize(920, 635);
+            this.setLocation(50, 50);
+        }
     }
 
     public void transparencia() {
@@ -296,7 +364,7 @@ public class inicio_login extends javax.swing.JFrame {
         if (us.verificarSesion(DigestUtils.md5Hex(PSTcontrasenia.getText()), usuario)) {
             this.dispose();
             splashjf s = new splashjf();
-
+            menu_usuario menu = new menu_usuario();
             this.dispose();
             s.setVisible(true);
             s.setLocationRelativeTo(null);
@@ -307,7 +375,7 @@ public class inicio_login extends javax.swing.JFrame {
                     s.barracargando.setValue(i);
                     if (i == 100) {
                         s.dispose();
-
+                        menu.setVisible(true);
                     }
                 }
 
