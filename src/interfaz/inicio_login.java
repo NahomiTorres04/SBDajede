@@ -10,7 +10,6 @@ import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.apache.commons.codec.digest.DigestUtils;
 import rojerusan.RSPanelsSlider;
@@ -39,10 +38,7 @@ public class inicio_login extends javax.swing.JFrame {
         ajustar_tamanio();
         transparencia();
     }
-    /**
-     * Proceso para ajustar el tamaño de la aplicación
-     * dependiendo de la resolución de la computadora del usuario
-     */
+
     public void ajustar_tamanio()
     {
         //TAMAÑO PREFERIDO PARA LA APLICACIÓN: 1450, 813
@@ -109,7 +105,6 @@ public class inicio_login extends javax.swing.JFrame {
             this.setLocation(50, 50);
         }
     }
-
     public void transparencia() {
 //        btnminimizar.setOpaque(false);
 //        btnminimizar.setContentAreaFilled(false);
@@ -364,6 +359,7 @@ public class inicio_login extends javax.swing.JFrame {
         if (us.verificarSesion(DigestUtils.md5Hex(PSTcontrasenia.getText()), usuario)) {
             this.dispose();
             splashjf s = new splashjf();
+
             this.dispose();
             s.setVisible(true);
             s.setLocationRelativeTo(null);
@@ -374,6 +370,7 @@ public class inicio_login extends javax.swing.JFrame {
                     s.barracargando.setValue(i);
                     if (i == 100) {
                         s.dispose();
+
                     }
                 }
 

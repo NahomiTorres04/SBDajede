@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author mynor
  */
-public class Conexion 
+public class Conexion
 {
     private String nombreBD="proyecto";
     private String usuario="pruebas";
