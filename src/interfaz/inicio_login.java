@@ -364,7 +364,6 @@ public class inicio_login extends javax.swing.JFrame {
         if (us.verificarSesion(DigestUtils.md5Hex(PSTcontrasenia.getText()), usuario)) {
             this.dispose();
             splashjf s = new splashjf();
-            menu_usuario menu = new menu_usuario();
             this.dispose();
             s.setVisible(true);
             s.setLocationRelativeTo(null);
@@ -375,7 +374,6 @@ public class inicio_login extends javax.swing.JFrame {
                     s.barracargando.setValue(i);
                     if (i == 100) {
                         s.dispose();
-                        menu.setVisible(true);
                     }
                 }
 
